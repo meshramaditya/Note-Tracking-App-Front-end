@@ -54,7 +54,6 @@ const NotePage = () => {
     if (!token) return;
 
     try {
-      const API = import.meta.env.VITE_API_URL;
       await axios.delete(`${BASE_URL}/api/notes/${noteId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });

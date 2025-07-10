@@ -14,8 +14,6 @@ const SignupPage = () => {
 
   const handleSignup = async () => {
     try {
-      const API = import.meta.env.VITE_API_URL;
-
         await axios.post(`${BASE_URL}/api/auth/signup`, { name, email, password });
       navigate('/'); // ✅ Redirect to Sign In after successful signup
     } catch (err) {
