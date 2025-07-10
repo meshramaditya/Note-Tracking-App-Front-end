@@ -13,7 +13,7 @@ const SignupPage = () => {
 
   const handleSignup = async () => {
     try {
-      await axios.post('http://localhost:5000/api/auth/signup', {
+      await axios.post('https://note-tracking-app-back-end.onrender.com/api/auth/signup', {
         name,
         dob,
         email,
