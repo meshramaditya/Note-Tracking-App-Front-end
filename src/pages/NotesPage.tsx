@@ -17,7 +17,7 @@ const NotePage = () => {
     }
 
     axios
-      .get('axios.get(`${API}/notes`, ...)', {
+      .get('https://note-tracking-app-back-end.onrender.com/api/notes)', {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -37,7 +37,7 @@ const NotePage = () => {
 
     try {
       const res = await axios.post(
-        '${API}/notes',
+        'https://note-tracking-app-back-end.onrender.com/api/notes',
         { content },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -54,7 +54,7 @@ const NotePage = () => {
 
     try {
       const API = import.meta.env.VITE_API_URL;
-      await axios.delete(`${API}/notes/${noteId}`, {
+      await axios.delete(`https://note-tracking-app-back-end.onrender.com/api/notes/${noteId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setNotes((prev) => prev.filter((note) => note._id !== noteId));
