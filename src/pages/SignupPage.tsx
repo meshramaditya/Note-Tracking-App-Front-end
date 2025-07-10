@@ -16,7 +16,7 @@ const SignupPage = () => {
     try {
       const API = import.meta.env.VITE_API_URL;
 
-        const res = await axios.post(`${BASE_URL}/api/auth/signup`, { name, email, password });
+        await axios.post(`${BASE_URL}/api/auth/signup`, { name, email, password });
       navigate('/'); // ✅ Redirect to Sign In after successful signup
     } catch (err) {
       console.error(err);
