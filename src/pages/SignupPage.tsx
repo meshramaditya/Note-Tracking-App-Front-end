@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import image from '../assets/WINDO.jpg';
+import BASE_URL from '../api';
 
 const SignupPage = () => {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ const SignupPage = () => {
     try {
       const API = import.meta.env.VITE_API_URL;
 
-        axios.post('https://note-tracking-app-back-end.onrender.com/api/auth/signup', { name, email, password, dob });
+        const res = await axios.post(`${BASE_URL}/api/auth/signup`, { name, email, password });
       navigate('/'); // ✅ Redirect to Sign In after successful signup
     } catch (err) {
       console.error(err);

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { FaTrash } from 'react-icons/fa';
+import BASE_URL from '../api';// Adjust the import path as necessary
 
 const NotePage = () => {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ const NotePage = () => {
     }
 
     axios
-      .get('https://note-tracking-app-back-end.onrender.com/api/notes)', {
+      .get(`${BASE_URL}/api/notes`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -37,7 +38,7 @@ const NotePage = () => {
 
     try {
       const res = await axios.post(
-        'https://note-tracking-app-back-end.onrender.com/api/notes',
+        `${BASE_URL}/api/notes`,
         { content },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -54,7 +55,7 @@ const NotePage = () => {
 
     try {
       const API = import.meta.env.VITE_API_URL;
-      await axios.delete(`https://note-tracking-app-back-end.onrender.com/api/notes/${noteId}`, {
+      await axios.delete(`${BASE_URL}/api/notes/${noteId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setNotes((prev) => prev.filter((note) => note._id !== noteId));
