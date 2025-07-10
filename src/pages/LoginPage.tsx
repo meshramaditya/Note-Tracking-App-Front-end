@@ -12,7 +12,9 @@ const LoginPage = () => {
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post('https://note-tracking-app-back-end.onrender.com/api/auth/login', {
+      const API = import.meta.env.VITE_API_URL;
+
+      const res = await axios.post(`${API}/auth/login`, {
         email,
         password,
       });

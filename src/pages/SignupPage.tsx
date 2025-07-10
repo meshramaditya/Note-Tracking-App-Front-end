@@ -13,12 +13,13 @@ const SignupPage = () => {
 
   const handleSignup = async () => {
     try {
-      await axios.post('https://note-tracking-app-back-end.onrender.com/api/auth/signup', {
-        name,
-        dob,
-        email,
-        password,
-      });
+      const API = import.meta.env.VITE_API_URL;
+
+        axios.post(`${API}/auth/signup`, {
+          name,
+          email,
+          password,
+        });
       navigate('/'); // ✅ Redirect to Sign In after successful signup
     } catch (err) {
       console.error(err);
