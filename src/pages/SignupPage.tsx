@@ -18,17 +18,28 @@ const SignupPage = () => {
 
   const handleSignup = async () => {
     const { name, dob, email, password } = formData;
+
     if (!name || !dob || !email || !password) {
       toast.error('Please fill all fields ❌');
       return;
     }
 
+    console.log('🔍 Sending signup data:', formData); // ✅ DEBUG line
+
     try {
-      await axios.post(`${BASE_URL}/api/auth/signup`, formData);
+      const res = await axios.post(`${BASE_URL}/api/auth/signup`, formData);
       toast.success('Signup successful ✅');
+
+      // Save user + token if backend returns them
+      if (res.data.user && res.data.token) {
+        localStorage.setItem('user', JSON.stringify(res.data.user));
+        localStorage.setItem('token', res.data.token);
+      }
+
       setTimeout(() => navigate('/'), 1000);
-    } catch (err) {
-      toast.error('Signup failed ❌');
+    } catch (err: any) {
+      console.error('❌ Signup Error:', err.response?.data || err.message);
+      toast.error(err.response?.data?.message || 'Signup failed ❌');
     }
   };
 
@@ -51,7 +62,6 @@ const SignupPage = () => {
             />
             <input
               type="date"
-              placeholder="Date of Birth"
               value={formData.dob}
               onChange={(e) => setFormData({ ...formData, dob: e.target.value })}
               className="border border-gray-300 rounded-md px-4 py-2 text-sm focus:outline-blue-500"
@@ -96,3 +106,4 @@ const SignupPage = () => {
 };
 
 export default SignupPage;
+
