@@ -49,7 +49,7 @@ const SignupPage = () => {
       <div className="flex max-w-5xl w-full bg-white rounded-xl overflow-hidden shadow-lg">
         <div className="w-full md:w-1/2 p-8 md:p-12">
           <div className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">Sign up</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Create account</h2>
             <p className="text-sm text-gray-500">Sign up to enjoy the features of HD</p>
           </div>
           <div className="flex flex-col gap-4">
